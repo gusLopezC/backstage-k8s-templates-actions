@@ -6,6 +6,7 @@ on:
       - src/**
     branches:
       - master
+      - main
 
 jobs:
   ci:
@@ -27,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ricardoandre9707/${{values.app_name}}:${{ '${{ env.COMMIT_ID }}' }}
+          tags: gusLopezC07/${{values.app_name}}:${{ '${{ env.COMMIT_ID }}' }}
     outputs:
       commit_id: ${{ '${{ env.COMMIT_ID }}' }}
 
@@ -71,7 +72,7 @@ jobs:
         run: |
 
           # Connects the argocd repo
-          repo="https://github.com/ricardoandre-97/${{values.app_name}}.git"
+          repo="https://github.com/gusLopezC/${{values.app_name}}.git"
           argocd repo list | grep -q $repo || argocd repo add $repo
 
           # Creates the argocd app
